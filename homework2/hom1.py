@@ -12,11 +12,12 @@
 # arr = [78, 43, 872, 228, 34, 278, 872]
 # Ելք
 # 4
+from typing import List
 
 
-def partitioning(arr, low, high):
-    pivot = arr[high]
-    i = low - 1
+def partitioning(arr: List[int], low: int, high: int) -> int:
+    pivot: int = arr[high]
+    i: int = low - 1
     for j in range(low, high):
         if arr[j] < pivot:
             i += 1
@@ -25,23 +26,23 @@ def partitioning(arr, low, high):
     return i + 1
 
 
-def swap(arr, i, j):
+def swap(arr: List, i: int, j):
     arr[i], arr[j] = arr[j], arr[i]
 
 
-def quick_sort(arr, low, high):
+def quick_sort(arr: List[int], low: int, high: int):
     if low < high:
-        piv_index = partitioning(arr, low, high)
+        piv_index: int = partitioning(arr, low, high)
 
         quick_sort(arr, low, piv_index - 1)
         quick_sort(arr, piv_index + 1, high)
 
 
-def is_anagram(num1, num2):
-    if num1==num2:
+def is_anagram(num1: int, num2: int) -> bool:
+    if num1 == num2:
         return False
-    num1_digits = []
-    num2_digits = []
+    num1_digits: List[int] = []
+    num2_digits: List[int] = []
     while num1 > 0:
         num1_digits.append(num1 % 10)
         num1 = num1 // 10
@@ -59,15 +60,17 @@ def is_anagram(num1, num2):
             return False
     return True
 
-def count_anagram_numbers(arr):
-    quick_sort(arr, 0, len(arr)-1)
-    count = 0
+
+def count_anagram_numbers(arr: List[int]) -> int:
+    quick_sort(arr, 0, len(arr) - 1)
+    count: int = 0
     for i in range(0, len(arr) - 1):
-        if arr[i+1] and is_anagram(arr[i], arr[i+1]):
-            count+=2
+        if arr[i + 1] and is_anagram(arr[i], arr[i + 1]):
+            count += 2
     return count
 
+
 if __name__ == "__main__":
-    arr_list = [78, 43, 872, 228, 34, 278, 872]
-    res = count_anagram_numbers(arr_list)
-    print(res)
+    arr_list: List[int] = [78, 43, 872, 228, 34, 278, 872]
+    count_numbers: int = count_anagram_numbers(arr_list)
+    print(count_numbers)
