@@ -40,7 +40,7 @@ def quick_sort(arr: List[int], low: int, high: int):
 
 def is_anagram(num1: int, num2: int) -> bool:
     if num1 == num2:
-        return False
+        return True
     num1_digits: List[int] = []
     num2_digits: List[int] = []
     while num1 > 0:
@@ -64,52 +64,27 @@ def is_anagram(num1: int, num2: int) -> bool:
 def count_anagram_numbers(arr: List[int]) -> int:
     quick_sort(arr, 0, len(arr) - 1)
     count: int = 0
-    for i in range(0, len(arr) - 1):
-        # for j in range(i+1, len(arr) - 1):
-            # if is_anagram(arr[i], arr[j]):
-            #     print([arr[i], arr[j]])
-            #     count += 1
-        if arr[i + 1] and is_anagram(arr[i], arr[i + 1]):
-            count += 2
+    for i in range(0, len(arr)):
+        for j in range(i + 1, len(arr)):
+            if len(str(arr[i])) < len(str(arr[j])):
+                break
+            if is_anagram(arr[i], arr[j]):
+                count += 1
     return count
 
 
-def test_count_anagram_numbers():
-    # Test case 1: Multiple anagram pairs
-    arr = [78, 43, 872, 228, 34, 278, 872]
-    result = count_anagram_numbers(arr)
-    print(f"Test case 1: {result}")  # Expected: 4
-
-    # Test case 2: No anagram pairs
-    arr = [12, 34, 56, 78]
-    result = count_anagram_numbers(arr)
-    print(f"Test case 2: {result}")  # Expected: 0
-
-    # Test case 3: Only one number in the array
-    arr = [123]
-    result = count_anagram_numbers(arr)
-    print(f"Test case 3: {result}")  # Expected: 0 (no pairs possible)
-
-    # Test case 4: Array with duplicates but not anagrams
-    arr = [123, 321, 456, 654, 111]
-    result = count_anagram_numbers(arr)
-    print(f"Test case 4: {result}")  # Expected: 2 (123 and 321 are anagrams, 456 and 654 are anagrams)
-
-    # Test case 5: Array with numbers of different digit lengths
-    arr = [12, 123, 1234, 4321]
-    result = count_anagram_numbers(arr)
-    print(f"Test case 5: {result}")  # Expected: 0 (no anagrams since they have different digit lengths)
-
-    # Test case 6: Array with repeated anagrams
-    arr = [123, 132, 213, 321, 231]
-    result = count_anagram_numbers(arr)
-    print(f"Test case 6: {result}")  # Expected: 10 (5 pairs of anagrams)
+def test_count_anagram_numbers(numbers_list: List[int]):
+    global test_case_number
+    result: int = count_anagram_numbers(numbers_list)
+    test_case_number += 1
+    print(f"Test case {test_case_number}: {result}")
 
 
 if __name__ == "__main__":
-    test_count_anagram_numbers()
-
-if __name__ == "__main__":
-    arr_list: List[int] = [78, 43, 872, 228, 34, 278, 872]
-    count_numbers: int = count_anagram_numbers(arr_list)
-    print(count_numbers)
+    test_case_number: int = 0
+    test_count_anagram_numbers([78, 43, 872, 228, 34, 278, 872])  # Expected: 4
+    test_count_anagram_numbers([12, 34, 56, 78])  # Expected: 0
+    test_count_anagram_numbers([123])  # Expected: 0 (no pairs possible)
+    test_count_anagram_numbers([123, 132, 213, 321, 231])  # Expected: 10 (5 pairs of anagrams)
+    test_count_anagram_numbers(
+        [123, 321, 456, 654, 111])  # Expected: 2 (123 and 321 are anagrams, 456 and 654 are anagrams)

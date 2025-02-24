@@ -10,7 +10,7 @@ from typing import List
 
 def count_sugar_box_max_price(box_kg: int, prices: List[int]) -> List[int]:
     if box_kg == 0:
-        return 0
+        return []
     dp = [0] * (box_kg + 1)
     cut_indexes = [0] * (box_kg + 1)
 
