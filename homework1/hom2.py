@@ -57,7 +57,39 @@ def find_occurrence(arr: List[int], k: int) -> List[int]:
     return [left_index, right_index]
 
 
+def test_find_occurrence():
+    arr = [1, 3, 4, 4, 6]
+    result = find_occurrence(arr, 4)
+    print(f"Test case 1 (value 4): {result}")  # Expected: [2, 3]
+
+    arr = [1, 2, 4, 6]
+    result = find_occurrence(arr, 3)
+    print(f"Test case 2 (value 3): {result}")  # Expected: [-1, -1]
+
+    arr = [1, 2, 4, 6]
+    result = find_occurrence(arr, 4)
+    print(f"Test case 3 (value 4): {result}")  # Expected: [2, 2]
+
+    arr = [1, 1, 1, 1]
+    result = find_occurrence(arr, 1)
+    print(f"Test case 4 (value 1): {result}")  # Expected: [0, 3]
+
+    arr = [1, 3, 4, 5, 7, 7, 7, 7]
+    result = find_occurrence(arr, 7)
+    print(f"Test case 5 (value 7): {result}")  # Expected: [4, 7]
+
+    arr = []
+    result = find_occurrence(arr, 5)
+    print(f"Test case 6 (empty array, value 5): {result}")  # Expected: [-1, -1]
+
+    arr = [3, 3, 3, 4, 5]
+    result = find_occurrence(arr, 3)
+    print(f"Test case 7 (value 3 at the beginning): {result}")  # Expected: [0, 2]
+
+    arr = [1, 2, 3, 4, 5, 5]
+    result = find_occurrence(arr, 5)
+    print(f"Test case 8 (value 5 at the end): {result}")  # Expected: [4, 5]
+
+
 if __name__ == "__main__":
-    arr_list: List[int] = [1, 2, 3, 3, 3, 4, 5, 6, 7, 7, 7, 7, 8, 9, 10, 11, 12, 13]
-    k_occurrence: List[int] = find_occurrence(arr_list, 7)
-    print(k_occurrence)
+    test_find_occurrence()

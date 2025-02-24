@@ -1,4 +1,5 @@
 # Իրականացնել QuickSort ալգորիթմը:
+from datetime import datetime
 from typing import List
 
 
@@ -25,7 +26,41 @@ def quick_sort(arr: List[int], low: int, high: int):
         quick_sort(arr, piv_index + 1, high)
 
 
+def test_quick_sort():
+    arr = [2, 1, 5, 3, 9, 7, 0, 3]
+    start_time = datetime.now()
+    quick_sort(arr, 0, len(arr) - 1)
+    print(
+        f"Duration-{datetime.now() - start_time}: Test case 1 (Random unordered list): {arr}")  # Expected: [0, 1, 2, 3, 3, 5, 7, 9]
+
+    arr = [1, 2, 3, 4, 5, 6]
+    start_time = datetime.now()
+    quick_sort(arr, 0, len(arr) - 1)
+    print(
+        f"Duration-{datetime.now() - start_time}: Test case 2 (Already sorted list): {arr}")  # Expected: [1, 2, 3, 4, 5, 6]
+
+    arr = [4, 2, 5, 3, 2, 4, 2]
+    start_time = datetime.now()
+    quick_sort(arr, 0, len(arr) - 1)
+    print(
+        f"Duration-{datetime.now() - start_time}: Test case 3 (List with duplicates): {arr}")  # Expected: [2, 2, 2, 3, 4, 4, 5]
+
+    arr = []
+    start_time = datetime.now()
+    quick_sort(arr, 0, len(arr) - 1)
+    print(f"Duration-{datetime.now() - start_time}: Test case 4 (Empty list): {arr}")  # Expected: []
+
+    arr = [10]
+    start_time = datetime.now()
+    quick_sort(arr, 0, len(arr) - 1)
+    print(f"Duration-{datetime.now() - start_time}: Test case 5 (Single element list): {arr}")  # Expected: [10]
+
+    arr = [7, 7, 7, 7, 7]
+    start_time = datetime.now()
+    quick_sort(arr, 0, len(arr) - 1)
+    print(
+        f"Duration-{datetime.now() - start_time}: Test case 6 (List with all identical elements): {arr}")  # Expected: [7, 7, 7, 7, 7]
+
+
 if __name__ == "__main__":
-    arr_list: List[int] = [2, 1, 5, 3, 9, 7, 0, 3]
-    quick_sort(arr_list, 0, len(arr_list) - 1)
-    print(arr_list)
+    test_quick_sort()
