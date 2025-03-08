@@ -62,7 +62,7 @@ def test_fibonacci_like_function_with_memoization(num: int):
     start_time: datetime = datetime.now()
     memo: dict[int:int] = {0: 0, 1: 1, 2: 2}
     result: int = fibonacci_like_function_with_memorization(num, memo)
-    print(f"Duration: {datetime.now() - start_time} (with memorization   ). Result for {num} : {result}")
+    print(f"Duration: {datetime.now() - start_time} (with memoization    ). Result for {num} : {result}")
 
 
 def test_fibonacci_like_function_with_tabulation(num: int):

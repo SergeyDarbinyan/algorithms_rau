@@ -117,7 +117,7 @@ def test_lis(arr: List[int]):
 def test_lis_with_memoization(arr: List[int]):
     start_time: datetime = datetime.now()
     lis_len: int = lis_with_memoization(arr)
-    print(f"Duration: {datetime.now() - start_time} (with memorization   ). Length of lis {arr} : {lis_len}")
+    print(f"Duration: {datetime.now() - start_time} (with memoization    ). Length of lis {arr} : {lis_len}")
 
 
 def test_lis_with_tabulation(arr: List[int]):

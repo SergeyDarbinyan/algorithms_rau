@@ -87,7 +87,7 @@ def test_rod_max_price_with_memoization(rod_len: int, prices: dict[int:int]):
     start_time: datetime = datetime.now()
     memo: List[int] = [-1] * len(metr_price_pairs)
     rod_max_price: int = count_rod_max_price_with_memoization(rod_len, prices, memo)
-    print(f"Duration: {datetime.now() - start_time} (with memorization   ). Price for {rod_len} : {rod_max_price}")
+    print(f"Duration: {datetime.now() - start_time} (with memoization    ). Price for {rod_len} : {rod_max_price}")
 
 
 def test_rod_max_price_with_tabulation(rod_len: int, prices: dict[int:int]):
