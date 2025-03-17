@@ -73,18 +73,18 @@ def count_anagram_numbers(arr: List[int]) -> int:
     return count
 
 
-def test_count_anagram_numbers(numbers_list: List[int]):
-    global test_case_number
+def my_test_count_anagram_numbers(numbers_list: List[int]):
+    global my_test_case_number
     result: int = count_anagram_numbers(numbers_list)
-    test_case_number += 1
-    print(f"Test case {test_case_number}: {result}")
+    my_test_case_number += 1
+    print(f"Test case {my_test_case_number}: {result}")
 
 
 if __name__ == "__main__":
-    test_case_number: int = 0
-    test_count_anagram_numbers([78, 43, 872, 228, 34, 278, 872])  # Expected: 4
-    test_count_anagram_numbers([12, 34, 56, 78])  # Expected: 0
-    test_count_anagram_numbers([123])  # Expected: 0 (no pairs possible)
-    test_count_anagram_numbers([123, 132, 213, 321, 231])  # Expected: 10 (5 pairs of anagrams)
-    test_count_anagram_numbers(
+    my_test_case_number: int = 0
+    my_test_count_anagram_numbers([78, 43, 872, 228, 34, 278, 872])  # Expected: 4
+    my_test_count_anagram_numbers([12, 34, 56, 78])  # Expected: 0
+    my_test_count_anagram_numbers([123])  # Expected: 0 (no pairs possible)
+    my_test_count_anagram_numbers([123, 132, 213, 321, 231])  # Expected: 10 (5 pairs of anagrams)
+    my_test_count_anagram_numbers(
         [123, 321, 456, 654, 111])  # Expected: 2 (123 and 321 are anagrams, 456 and 654 are anagrams)

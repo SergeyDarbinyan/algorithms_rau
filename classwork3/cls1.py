@@ -77,26 +77,26 @@ def count_rod_max_price_and_breakdowns_with_tabulation(rod_len: int, prices: dic
     return dp[rod_len], len_indexes_of_max_price
 
 
-def test_rod_max_price(rod_len: int, prices: dict[int:int]):
+def my_test_rod_max_price(rod_len: int, prices: dict[int:int]):
     start_time: datetime = datetime.now()
     rod_max_price: int = count_rod_max_price(rod_len, prices)
     print(f"Duration: {datetime.now() - start_time} (without optimization). Price for {rod_len} : {rod_max_price}")
 
 
-def test_rod_max_price_with_memoization(rod_len: int, prices: dict[int:int]):
+def my_test_rod_max_price_with_memoization(rod_len: int, prices: dict[int:int]):
     start_time: datetime = datetime.now()
     memo: List[int] = [-1] * len(metr_price_pairs)
     rod_max_price: int = count_rod_max_price_with_memoization(rod_len, prices, memo)
     print(f"Duration: {datetime.now() - start_time} (with memoization    ). Price for {rod_len} : {rod_max_price}")
 
 
-def test_rod_max_price_with_tabulation(rod_len: int, prices: dict[int:int]):
+def my_test_rod_max_price_with_tabulation(rod_len: int, prices: dict[int:int]):
     start_time: datetime = datetime.now()
     rod_max_price: int = count_rod_max_price_with_tabulation(rod_len, prices)
     print(f"Duration: {datetime.now() - start_time} (with tabulation     ). Price for {rod_len} : {rod_max_price}")
 
 
-def test_rod_max_price_and_breakdowns_with_tabulation(rod_len: int, prices: dict[int:int]):
+def my_test_rod_max_price_and_breakdowns_with_tabulation(rod_len: int, prices: dict[int:int]):
     start_time: datetime = datetime.now()
     rod_max_price_and_breakdowns: tuple[int:List[int]] = count_rod_max_price_and_breakdowns_with_tabulation(rod_len,
                                                                                                             prices)
@@ -104,11 +104,11 @@ def test_rod_max_price_and_breakdowns_with_tabulation(rod_len: int, prices: dict
         f"Duration: {datetime.now() - start_time} (with tabulation     ). Price for {rod_len} : {rod_max_price_and_breakdowns[0]}. Breakdowns : {rod_max_price_and_breakdowns[1]}.")
 
 
-def test_rod_max_price_all_ways(num: int, prices: dict[int:int]):
-    test_rod_max_price(num, prices)
-    test_rod_max_price_with_memoization(num, prices)
-    test_rod_max_price_with_tabulation(num, prices)
-    test_rod_max_price_and_breakdowns_with_tabulation(num, prices)
+def my_test_rod_max_price_all_ways(num: int, prices: dict[int:int]):
+    my_test_rod_max_price(num, prices)
+    my_test_rod_max_price_with_memoization(num, prices)
+    my_test_rod_max_price_with_tabulation(num, prices)
+    my_test_rod_max_price_and_breakdowns_with_tabulation(num, prices)
 
 
 if __name__ == "__main__":
@@ -125,6 +125,6 @@ if __name__ == "__main__":
         9: 24,
         10: 30
     }
-    test_rod_max_price_all_ways(5, metr_price_pairs)
-    test_rod_max_price_all_ways(8, metr_price_pairs)
-    test_rod_max_price_all_ways(10, metr_price_pairs)
+    my_test_rod_max_price_all_ways(5, metr_price_pairs)
+    my_test_rod_max_price_all_ways(8, metr_price_pairs)
+    my_test_rod_max_price_all_ways(10, metr_price_pairs)

@@ -28,13 +28,13 @@ def count_sugar_box_max_price(box_kg: int, prices: List[int]) -> List[int]:
     return kg_indexes_of_max_price
 
 
-def test_sugar_box_max_price(box_kg, prices):
+def my_test_sugar_box_max_price(box_kg, prices):
     start_time: datetime = datetime.now()
     result: List[int] = count_sugar_box_max_price(box_kg, prices)
     print(f"Duration: {datetime.now() - start_time}. Indexes for {box_kg} : {result}")
 
 
 if __name__ == "__main__":
-    test_sugar_box_max_price(4, [0, 1, 5, 8, 9])
-    test_sugar_box_max_price(5, [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30])
-    test_sugar_box_max_price(8, [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30])
+    my_test_sugar_box_max_price(4, [0, 1, 5, 8, 9])
+    my_test_sugar_box_max_price(5, [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30])
+    my_test_sugar_box_max_price(8, [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30])

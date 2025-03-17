@@ -30,15 +30,15 @@ def lis_indexes(nums: List[int]) -> List[int]:
     return lis_indexes_arr
 
 
-def test_lis_indexes(arr: List[int]):
+def my_test_lis_indexes(arr: List[int]):
     start_time: datetime = datetime.now()
     lis_indexes_result: List[int] = lis_indexes(arr)
     print(f"Duration: {datetime.now() - start_time} (with tabulation     ). Lis for pages {arr} : {lis_indexes_result}")
 
 
 if __name__ == "__main__":
-    test_lis_indexes([120, 340, 150, 200, 500, 20])
-    test_lis_indexes([50, 60, 70, 80, 90, 100])
-    test_lis_indexes([100, 90, 80, 70, 60, 50])
-    test_lis_indexes([150, 200, 80, 120, 180, 300])
-    test_lis_indexes([150, 150, 150, 150, 150, 150])
+    my_test_lis_indexes([120, 340, 150, 200, 500, 20])
+    my_test_lis_indexes([50, 60, 70, 80, 90, 100])
+    my_test_lis_indexes([100, 90, 80, 70, 60, 50])
+    my_test_lis_indexes([150, 200, 80, 120, 180, 300])
+    my_test_lis_indexes([150, 150, 150, 150, 150, 150])

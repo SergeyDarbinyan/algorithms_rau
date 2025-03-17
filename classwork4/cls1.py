@@ -108,40 +108,40 @@ def lis_elements(nums: List[int]) -> List[int]:
     return lis_arr
 
 
-def test_lis(arr: List[int]):
+def my_test_lis(arr: List[int]):
     start_time: datetime = datetime.now()
     lis_len: int = lis(arr)
     print(f"Duration: {datetime.now() - start_time} (without optimization). Length of lis {arr} : {lis_len}")
 
 
-def test_lis_with_memoization(arr: List[int]):
+def my_test_lis_with_memoization(arr: List[int]):
     start_time: datetime = datetime.now()
     lis_len: int = lis_with_memoization(arr)
     print(f"Duration: {datetime.now() - start_time} (with memoization    ). Length of lis {arr} : {lis_len}")
 
 
-def test_lis_with_tabulation(arr: List[int]):
+def my_test_lis_with_tabulation(arr: List[int]):
     start_time: datetime = datetime.now()
     lis_len: int = lis_with_tabulation(arr)
     print(f"Duration: {datetime.now() - start_time} (with tabulation     ). Length of lis {arr} : {lis_len}")
 
 
-def test_lis_elements(arr: List[int]):
+def my_test_lis_elements(arr: List[int]):
     start_time: datetime = datetime.now()
     lis_result: List[int] = lis_elements(arr)
     print(f"Duration: {datetime.now() - start_time} (with tabulation     ). Lis for {arr} : {lis_result}")
 
 
-def test_lis_with_all_ways(arr: List[int]):
-    test_lis(arr)
-    test_lis_with_memoization(arr)
-    test_lis_with_tabulation(arr)
-    test_lis_elements(arr)
+def my_test_lis_with_all_ways(arr: List[int]):
+    my_test_lis(arr)
+    my_test_lis_with_memoization(arr)
+    my_test_lis_with_tabulation(arr)
+    my_test_lis_elements(arr)
 
 
 if __name__ == "__main__":
-    test_lis_with_all_ways([0, 1, 0, 3, 2, 3])
-    test_lis_with_all_ways([10, 22, 9, 33, 21, 50, 41, 60, 80])
-    test_lis_with_all_ways([7, 7, 7, 7, 7, 7])
-    test_lis_with_all_ways([10, 9, 2, 5, 3, 7, 101, 18])
-    test_lis_with_all_ways([120, 340, 150, 200, 500, 20])
+    my_test_lis_with_all_ways([0, 1, 0, 3, 2, 3])
+    my_test_lis_with_all_ways([10, 22, 9, 33, 21, 50, 41, 60, 80])
+    my_test_lis_with_all_ways([7, 7, 7, 7, 7, 7])
+    my_test_lis_with_all_ways([10, 9, 2, 5, 3, 7, 101, 18])
+    my_test_lis_with_all_ways([120, 340, 150, 200, 500, 20])

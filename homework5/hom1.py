@@ -23,6 +23,5 @@ def equalize_the_sequences_with_tabulation(str1, str2, n, m):
     return dp[n][m]
 
 
-
 if __name__ == "__main__":
     pass

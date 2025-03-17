@@ -60,7 +60,7 @@ def find_value_count(arr: List[int], value: int) -> int:
     return count_le_numbers
 
 
-def test_find_value_count():
+def my_test_find_value_count():
     arr = [1, 2, 3, 3, 3, 4, 5, 6, 7, 7, 7, 7, 8, 9, 10, 11, 12, 13]
 
     result = find_value_count(arr, 4)
@@ -86,4 +86,4 @@ def test_find_value_count():
 
 
 if __name__ == "__main__":
-    test_find_value_count()
+    my_test_find_value_count()

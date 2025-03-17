@@ -52,43 +52,43 @@ def fibonacci_like_function_elements(num: int) -> List[int]:
     return dp
 
 
-def test_fibonacci_like_function(num: int):
+def my_test_fibonacci_like_function(num: int):
     start_time: datetime = datetime.now()
     result: int = fibonacci_like_function(num)
     print(f"Duration: {datetime.now() - start_time} (without optimization). Result for {num} : {result}")
 
 
-def test_fibonacci_like_function_with_memoization(num: int):
+def my_test_fibonacci_like_function_with_memoization(num: int):
     start_time: datetime = datetime.now()
     memo: dict[int:int] = {0: 0, 1: 1, 2: 2}
     result: int = fibonacci_like_function_with_memorization(num, memo)
     print(f"Duration: {datetime.now() - start_time} (with memoization    ). Result for {num} : {result}")
 
 
-def test_fibonacci_like_function_with_tabulation(num: int):
+def my_test_fibonacci_like_function_with_tabulation(num: int):
     start_time: datetime = datetime.now()
     result: int = fibonacci_like_function_with_tabulation(num)
     print(f"Duration: {datetime.now() - start_time} (with tabulation     ). Result for {num} : {result}")
 
 
-def test_fibonacci_like_function_elements(num: int):
+def my_test_fibonacci_like_function_elements(num: int):
     start_time: datetime = datetime.now()
     result: List[int] = fibonacci_like_function_elements(num)
     print(f"Duration: {datetime.now() - start_time}. Elements for {num} : {result}")
 
 
-def test_fibonacci_like_function_with_all(num: int):
+def my_test_fibonacci_like_function_with_all(num: int):
     if num < 32:
-        test_fibonacci_like_function(num)
+        my_test_fibonacci_like_function(num)
     else:
         print(f"Duration: is too long to initialize for {num}. Skipping...")
-    test_fibonacci_like_function_with_memoization(num)
-    test_fibonacci_like_function_with_tabulation(num)
-    test_fibonacci_like_function_elements(num)
+    my_test_fibonacci_like_function_with_memoization(num)
+    my_test_fibonacci_like_function_with_tabulation(num)
+    my_test_fibonacci_like_function_elements(num)
 
 
 if __name__ == "__main__":
-    test_fibonacci_like_function_with_all(10)
-    test_fibonacci_like_function_with_all(25)
-    test_fibonacci_like_function_with_all(31)
-    test_fibonacci_like_function_with_all(500)
+    my_test_fibonacci_like_function_with_all(10)
+    my_test_fibonacci_like_function_with_all(25)
+    my_test_fibonacci_like_function_with_all(31)
+    my_test_fibonacci_like_function_with_all(500)

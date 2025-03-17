@@ -26,7 +26,7 @@ def quick_sort(arr: List[int], low: int, high: int):
         quick_sort(arr, piv_index + 1, high)
 
 
-def test_quick_sort():
+def my_test_quick_sort():
     arr = [2, 1, 5, 3, 9, 7, 0, 3]
     start_time = datetime.now()
     quick_sort(arr, 0, len(arr) - 1)
@@ -63,4 +63,4 @@ def test_quick_sort():
 
 
 if __name__ == "__main__":
-    test_quick_sort()
+    my_test_quick_sort()

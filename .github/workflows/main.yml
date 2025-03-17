@@ -25,4 +25,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Execute py script
-        run: python homework6/hom1.py
+        run: python homework6/test_hom1.py

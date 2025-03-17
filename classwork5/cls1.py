@@ -80,52 +80,52 @@ def lcs_string_with_tabulation(str1: str, str2: str, n: int, m: int) -> str:
     return lcs
 
 
-def test_lcs(str1: str, str2: str, n: int, m: int):
+def my_test_lcs(str1: str, str2: str, n: int, m: int):
     start_time: datetime = datetime.now()
     lcs_len: int = lcs_recursive(str1, str2, n, m)
     print(
         f"Duration: {datetime.now() - start_time} (without optimization). Length of lcs {str1} and {str2} : {lcs_len}")
 
 
-def test_lcs_with_memoization(str1: str, str2: str, n: int, m: int):
+def my_test_lcs_with_memoization(str1: str, str2: str, n: int, m: int):
     start_time: datetime = datetime.now()
     lcs_len: int = lcs_with_memoization(str1, str2, n, m)
     print(
         f"Duration: {datetime.now() - start_time} (with memoization    ). Length of lcs {str1} and {str2} : {lcs_len}")
 
 
-def test_lcs_with_tabulation(str1: str, str2: str, n: int, m: int):
+def my_test_lcs_with_tabulation(str1: str, str2: str, n: int, m: int):
     start_time: datetime = datetime.now()
     lcs_len: int = lcs_with_tabulation(str1, str2, n, m)
     print(
         f"Duration: {datetime.now() - start_time} (with tabulation     ). Length of lcs {str1} and {str2} : {lcs_len}")
 
 
-def test_lcs_string_with_tabulation(str1: str, str2: str, n: int, m: int):
+def my_test_lcs_string_with_tabulation(str1: str, str2: str, n: int, m: int):
     start_time: datetime = datetime.now()
     lcs: str = lcs_string_with_tabulation(str1, str2, n, m)
     print(
         f"Duration: {datetime.now() - start_time} (with tabulation     ). LCS of {str1} and {str2} : {lcs}")
 
 
-def test_lcs_with_all_ways(str1: str, str2: str):
-    test_lcs(str1, str2, len(str1), len(str2))
-    test_lcs_with_memoization(str1, str2, len(str1), len(str2))
-    test_lcs_with_tabulation(str1, str2, len(str1), len(str2))
-    test_lcs_string_with_tabulation(str1, str2, len(str1), len(str2))
+def my_test_lcs_with_all_ways(str1: str, str2: str):
+    my_test_lcs(str1, str2, len(str1), len(str2))
+    my_test_lcs_with_memoization(str1, str2, len(str1), len(str2))
+    my_test_lcs_with_tabulation(str1, str2, len(str1), len(str2))
+    my_test_lcs_string_with_tabulation(str1, str2, len(str1), len(str2))
 
 
-def test_lcs_cases():
-    test_lcs_with_all_ways('abcde', 'ace')
-    test_lcs_with_all_ways("abc", "xyz")
-    test_lcs_with_all_ways("abcdef", "abcdef")
-    test_lcs_with_all_ways("abc", "aabbcc")
-    test_lcs_with_all_ways("aaaabbbb", "ababab")
-    test_lcs_with_all_ways("aarfbyhkjkmnvvgfrdgujlolpmnhk", "eqsrfygi")
-    test_lcs_with_all_ways("AGGTAB", "GXTXAYB")
-    test_lcs_with_all_ways("abc", "")
-    test_lcs_with_all_ways("", "")
+def my_test_lcs_cases():
+    my_test_lcs_with_all_ways('abcde', 'ace')
+    my_test_lcs_with_all_ways("abc", "xyz")
+    my_test_lcs_with_all_ways("abcdef", "abcdef")
+    my_test_lcs_with_all_ways("abc", "aabbcc")
+    my_test_lcs_with_all_ways("aaaabbbb", "ababab")
+    my_test_lcs_with_all_ways("aarfbyhkjkmnvvgfrdgujlolpmnhk", "eqsrfygi")
+    my_test_lcs_with_all_ways("AGGTAB", "GXTXAYB")
+    my_test_lcs_with_all_ways("abc", "")
+    my_test_lcs_with_all_ways("", "")
 
 
 if __name__ == "__main__":
-    test_lcs_cases()
+    my_test_lcs_cases()

@@ -55,24 +55,24 @@ def lps_substr_with_tabulation(str1: str) -> str:
     return ''.join(lps + second_part[::-1])
 
 
-def test_lps_substr_with_tabulation(str1: str):
+def my_test_lps_substr_with_tabulation(str1: str):
     start_time: datetime = datetime.now()
     lps: str = lps_substr_with_tabulation(str1)
     print(
         f"Duration: {datetime.now() - start_time} (with tabulation     ). Lps of {str1} : {lps}")
 
 
-def test_lps_cases():
-    test_lps_substr_with_tabulation('abcde')
-    test_lps_substr_with_tabulation('abba')
-    test_lps_substr_with_tabulation('racecar')
-    test_lps_substr_with_tabulation('z')
-    test_lps_substr_with_tabulation('aaaaa')
-    test_lps_substr_with_tabulation('agbdba')
-    test_lps_substr_with_tabulation('abcbad')
-    test_lps_substr_with_tabulation('abacdfgdcaba')
-    test_lps_substr_with_tabulation('')
+def my_test_lps_cases():
+    my_test_lps_substr_with_tabulation('abcde')
+    my_test_lps_substr_with_tabulation('abba')
+    my_test_lps_substr_with_tabulation('racecar')
+    my_test_lps_substr_with_tabulation('z')
+    my_test_lps_substr_with_tabulation('aaaaa')
+    my_test_lps_substr_with_tabulation('agbdba')
+    my_test_lps_substr_with_tabulation('abcbad')
+    my_test_lps_substr_with_tabulation('abacdfgdcaba')
+    my_test_lps_substr_with_tabulation('')
 
 
 if __name__ == "__main__":
-    test_lps_cases()
+    my_test_lps_cases()

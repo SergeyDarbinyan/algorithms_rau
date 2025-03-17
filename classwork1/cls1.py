@@ -49,7 +49,7 @@ def find_occurrence_(arr: List[int], k: int) -> Union[str, int]:
     return right_index - left_index + 1
 
 
-def test_find_occurrence():
+def my_test_find_occurrence():
     arr_list: List[int] = [1, 2, 3, 3, 3, 4, 5, 6, 7, 7, 7, 7, 8, 9, 10, 11, 12, 13]
 
     start_time = datetime.now()
@@ -81,4 +81,4 @@ def test_find_occurrence():
 
 
 if __name__ == "__main__":
-    test_find_occurrence()
+    my_test_find_occurrence()

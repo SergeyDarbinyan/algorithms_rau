@@ -57,7 +57,7 @@ def find_occurrence(arr: List[int], k: int) -> List[int]:
     return [left_index, right_index]
 
 
-def test_find_occurrence():
+def my_test_find_occurrence():
     arr = [1, 3, 4, 4, 6]
     result = find_occurrence(arr, 4)
     print(f"Test case 1 (value 4): {result}")  # Expected: [2, 3]
@@ -92,4 +92,4 @@ def test_find_occurrence():
 
 
 if __name__ == "__main__":
-    test_find_occurrence()
+    my_test_find_occurrence()
