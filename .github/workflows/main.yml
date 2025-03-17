@@ -36,6 +36,8 @@ jobs:
           
           files_changed=$(git diff --name-only $GITHUB_SHA)
           
+          echo "Files changed in the current commit: $files_changed"
+
           for i in {1..9}; do
             echo "Checking for changes in homework$i..."
           
