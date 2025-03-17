@@ -1,0 +1,28 @@
+name: Build & Deploy Algorithms RAU
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install python packages
+        run: | 
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Execute py script
+        run: python homework6/hom1.py
