@@ -26,22 +26,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-#      - name: Run Unit Tests
-#        run: pytest homework6/test_hom1.py --maxfail=1 --disable-warnings
+      #      - name: Run Unit Tests
+      #        run: pytest homework6/test_hom1.py --maxfail=1 --disable-warnings
 
       - name: Check for changes in homework folders
         id: check-changes
         run: |
           modified_homeworks=""
           
-          before_commit="${{ github.event.before }}"
-          current_commit="${{ github.sha }}"
+          files_changed=$(git diff --name-only $GITHUB_SHA)
           
           for i in {1..9}; do
-            echo "Comparing commits: before=$before_commit sha=$current_commit"
+            echo "Checking for changes in homework$i..."
           
-            files_changed=$(git diff --name-only $before_commit $current_commit | grep "^homework$i/")
-            if [[ -n "$files_changed" ]]; then
+            if echo "$files_changed" | grep -q "^homework$i/"; then
               modified_homeworks="$modified_homeworks homework$i"
             fi
           done
