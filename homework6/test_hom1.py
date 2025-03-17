@@ -1,64 +1,77 @@
-import pytest
 from datetime import datetime
+
+import pytest
+
 from hom1 import knap_sack_recursive, knap_sack_with_memoization
 
-profit_list_1 = [60, 100, 120, 40, 20, 30]
-weight_list_1 = [10, 20, 30, 15, 5, 12]
-capacity_1 = 50
-expected_result_1 = 220
+test_data = {
+    "test1": {
+        "profit_list": [60, 100, 120, 40, 20, 30],
+        "weight_list": [10, 20, 30, 15, 5, 12],
+        "capacity": 50,
+        "expected_result": 220
+    },
+    "test2": {
+        "profit_list": [10, 20, 30],
+        "weight_list": [1, 2, 3],
+        "capacity": 4,
+        "expected_result": 40
+    },
+    "test3": {
+        "profit_list": [60, 100, 120],
+        "weight_list": [10, 20, 30],
+        "capacity": 50,
+        "expected_result": 220
+    },
+    "test4": {
+        "profit_list": [i * 10 for i in range(1, 25)],
+        "weight_list": [i for i in range(1, 25)],
+        "capacity": 500,
+        "expected_result": 3000
+    },
+    "test5": {
+        "profit_list": [i * 10 for i in range(1, 12)],
+        "weight_list": [i for i in range(1, 12)],
+        "capacity": 160,
+        "expected_result": 660
+    }
+}
 
-profit_list_2 = [10, 20, 30]
-weight_list_2 = [1, 2, 3]
-capacity_2 = 4
-expected_result_2 = 40
 
-profit_list_3 = [60, 100, 120]
-weight_list_3 = [10, 20, 30]
-capacity_3 = 50
-expected_result_3 = 220
+@pytest.mark.parametrize(
+    "test_case",
+    list(test_data.keys())
+)
+def test_knap_sack_recursive(test_case):
+    data = test_data[test_case]
 
-profit_list_4 = [i * 10 for i in range(1, 25)]
-weight_list_4 = [i for i in range(1, 25)]
-capacity_4 = 500
-expected_result_4 = 3000
+    result = knap_sack_recursive(len(data["profit_list"]), data["capacity"], data["profit_list"], data["weight_list"])
+    assert result == data["expected_result"]
 
 
-def test_knap_sack_recursive():
-    # Test 1
-    result_1 = knap_sack_recursive(len(profit_list_1), capacity_1, profit_list_1, weight_list_1)
-    assert result_1 == expected_result_1
+@pytest.mark.parametrize(
+    "test_case",
+    list(test_data.keys())
+)
+def test_knap_sack_with_memoization(test_case):
+    data = test_data[test_case]
 
-    # Test 2
-    result_2 = knap_sack_recursive(len(profit_list_2), capacity_2, profit_list_2, weight_list_2)
-    assert result_2 == expected_result_2
-
-    # Test 3
-    result_3 = knap_sack_recursive(len(profit_list_3), capacity_3, profit_list_3, weight_list_3)
-    assert result_3 == expected_result_3
-
-
-def test_knap_sack_with_memoization():
-    memo_1 = [[-1 for _ in range(capacity_1 + 1)] for _ in range(len(profit_list_1) + 1)]
-    result_1 = knap_sack_with_memoization(len(profit_list_1), capacity_1, profit_list_1, weight_list_1, memo_1)
-    assert result_1 == expected_result_1
-
-    memo_2 = [[-1 for _ in range(capacity_2 + 1)] for _ in range(len(profit_list_2) + 1)]
-    result_2 = knap_sack_with_memoization(len(profit_list_2), capacity_2, profit_list_2, weight_list_2, memo_2)
-    assert result_2 == expected_result_2
-
-    memo_3 = [[-1 for _ in range(capacity_3 + 1)] for _ in range(len(profit_list_3) + 1)]
-    result_3 = knap_sack_with_memoization(len(profit_list_3), capacity_3, profit_list_3, weight_list_3, memo_3)
-    assert result_3 == expected_result_3
+    memo_1 = [[-1 for _ in range(data["capacity"] + 1)] for _ in range(len(data["profit_list"]) + 1)]
+    result_1 = knap_sack_with_memoization(len(data["profit_list"]), data["capacity"], data["profit_list"],
+                                          data["weight_list"], memo_1)
+    assert result_1 == data["expected_result"]
 
 
 def test_knap_sack_time():
+    data = test_data["test4"]
     start_time = datetime.now()
-    knap_sack_recursive(len(profit_list_4), capacity_4, profit_list_4, weight_list_4)
+    knap_sack_recursive(len(data["profit_list"]), data["capacity"], data["profit_list"], data["weight_list"])
     duration_recursive = datetime.now() - start_time
 
     start_time = datetime.now()
-    memo_4 = [[-1 for _ in range(capacity_4 + 1)] for _ in range(len(profit_list_4) + 1)]
-    knap_sack_with_memoization(len(profit_list_4), capacity_4, profit_list_4, weight_list_4, memo_4)
+    memo_4 = [[-1 for _ in range(data["capacity"] + 1)] for _ in range(len(data["profit_list"]) + 1)]
+    knap_sack_with_memoization(len(data["profit_list"]), data["capacity"], data["profit_list"], data["weight_list"],
+                               memo_4)
     duration_memoization = datetime.now() - start_time
 
     print(f"\nRecursive Duration: {duration_recursive}")
