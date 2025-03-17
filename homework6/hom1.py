@@ -55,3 +55,4 @@ if __name__ == "__main__":
     my_test_knap_sack_with_all_ways(50, [60, 100, 120], [10, 20, 30])
     my_test_knap_sack_with_all_ways(500, [i * 10 for i in range(1, 25)], [i for i in range(1, 25)])
     my_test_knap_sack_with_all_ways(400, [i * 10 for i in range(1, 25)], [i for i in range(1, 25)])
+    my_test_knap_sack_with_all_ways(300, [i * 10 for i in range(1, 25)], [i for i in range(1, 25)])
