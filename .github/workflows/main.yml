@@ -28,9 +28,7 @@ jobs:
 
       - name: Run unit tests
         run: | 
-          pytest homework6/test_hom1.py --maxfail=1 --disable-warnings &&
-          pytest homework6/test_hom1.py --maxfail=1 --disable-warnings
-          
+          pytest -v --capture=no homework6/test_hom1.py --maxfail=1 --disable-warnings          
 
 #      - name: Check for changes in homework folders
 #        id: check-changes
