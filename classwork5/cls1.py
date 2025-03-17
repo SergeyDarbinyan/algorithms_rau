@@ -54,6 +54,32 @@ def lcs_with_tabulation(str1: str, str2: str, n: int, m: int) -> int:
     return dp[n][m]
 
 
+def lcs_string_with_tabulation(str1: str, str2: str, n: int, m: int) -> str:
+    dp: List[List[int]] = [[0 for _ in range(m + 1)] for _ in range(n + 1)]
+
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            if str1[i - 1] == str2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+
+    lcs_str = []
+    i, j = n, m
+    while i > 0 and j > 0:
+        if str1[i - 1] == str2[j - 1]:
+            lcs_str.append(str1[i - 1])
+            i -= 1
+            j -= 1
+        elif dp[i - 1][j] >= dp[i][j - 1]:
+            i -= 1
+        else:
+            j -= 1
+
+    lcs = ''.join(reversed(lcs_str))
+    return lcs
+
+
 def test_lcs(str1: str, str2: str, n: int, m: int):
     start_time: datetime = datetime.now()
     lcs_len: int = lcs_recursive(str1, str2, n, m)
@@ -75,10 +101,18 @@ def test_lcs_with_tabulation(str1: str, str2: str, n: int, m: int):
         f"Duration: {datetime.now() - start_time} (with tabulation     ). Length of lcs {str1} and {str2} : {lcs_len}")
 
 
+def test_lcs_string_with_tabulation(str1: str, str2: str, n: int, m: int):
+    start_time: datetime = datetime.now()
+    lcs: str = lcs_string_with_tabulation(str1, str2, n, m)
+    print(
+        f"Duration: {datetime.now() - start_time} (with tabulation     ). LCS of {str1} and {str2} : {lcs}")
+
+
 def test_lcs_with_all_ways(str1: str, str2: str):
     test_lcs(str1, str2, len(str1), len(str2))
     test_lcs_with_memoization(str1, str2, len(str1), len(str2))
     test_lcs_with_tabulation(str1, str2, len(str1), len(str2))
+    test_lcs_string_with_tabulation(str1, str2, len(str1), len(str2))
 
 
 def test_lcs_cases():
