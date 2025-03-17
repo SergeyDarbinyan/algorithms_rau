@@ -50,6 +50,7 @@ def my_test_knap_sack_with_all_ways(w: int, profit_list: List[int], weight_list:
 
 
 if __name__ == "__main__":
+    print("Testing")
     my_test_knap_sack_with_all_ways(50, [60, 100, 120, 40, 20, 30], [10, 20, 30, 15, 5, 12])
     my_test_knap_sack_with_all_ways(4, [10, 20, 30], [1, 2, 3])
     my_test_knap_sack_with_all_ways(50, [60, 100, 120], [10, 20, 30])
