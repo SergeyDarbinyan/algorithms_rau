@@ -31,6 +31,10 @@ def knap_sack_with_memoization(n, w, profit_list: List[int], weight_list: List[i
     return memo[n][w]
 
 
+def knap_sack_with_tabulation(n, w, profit_list: List[int], weight_list: List[int], memo: List[List[int]]) -> int:
+    pass
+
+
 def my_test_knap_sack_recursive(w: int, profit_list: List[int], weight_list: List[int]):
     start_time: datetime = datetime.now()
     knap_sack: int = knap_sack_recursive(len(profit_list), w, profit_list, weight_list)
@@ -54,5 +58,3 @@ if __name__ == "__main__":
     my_test_knap_sack_with_all_ways(4, [10, 20, 30], [1, 2, 3])
     my_test_knap_sack_with_all_ways(50, [60, 100, 120], [10, 20, 30])
     my_test_knap_sack_with_all_ways(500, [i * 10 for i in range(1, 25)], [i for i in range(1, 25)])
-    my_test_knap_sack_with_all_ways(400, [i * 10 for i in range(1, 25)], [i for i in range(1, 25)])
-    my_test_knap_sack_with_all_ways(100, [i * 10 for i in range(1, 25)], [i for i in range(1, 25)])
