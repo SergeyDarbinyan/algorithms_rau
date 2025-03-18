@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from homework6.hom1 import knap_sack_recursive, knap_sack_with_memoization, knap_sack_with_tabulation
+from hom1 import knap_sack_recursive, knap_sack_with_memoization, knap_sack_with_tabulation
 
 test_data = {
     "test1": {
