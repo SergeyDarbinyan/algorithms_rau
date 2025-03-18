@@ -25,7 +25,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install -e .
 
 #      - name: Run unit tests
 #        run: |
@@ -39,10 +38,10 @@ jobs:
           
           for file in $files_changed; do
             if [[ $file == homework6/* ]]; then
-              pytest -v --capture=no homework6/tests/ --maxfail=1 --disable-warnings
+              pytest -v --capture=no homework6/test* --maxfail=1 --disable-warnings
             fi
             if [[ $file == homework5/* ]]; then
-              pytest -v --capture=no homework5/tests/ --maxfail=1 --disable-warnings
+              pytest -v --capture=no homework5/test* --maxfail=1 --disable-warnings
             fi
           done    
 
