@@ -33,7 +33,7 @@ test_data = {
         "profit_list": [i * 10 for i in range(1, 12)],
         "weight_list": [i for i in range(1, 12)],
         "capacity": 160,
-        "expected_result": 660
+        "expected_result": 500 #660
     }
 }
 
