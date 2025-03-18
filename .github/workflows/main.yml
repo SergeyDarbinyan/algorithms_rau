@@ -37,11 +37,11 @@ jobs:
           echo "Files changed: $files_changed"
           
           for file in $files_changed; do
-            if [[ $file == homework6/* ]]; then
-              pytest -v --capture=no homework6/test* --maxfail=1 --disable-warnings
+            if [[ $file == src/homework6/* ]]; then
+              pytest -v --capture=no tests/homework6/ --maxfail=1 --disable-warnings
             fi
-            if [[ $file == homework5/* ]]; then
-              pytest -v --capture=no homework5/test* --maxfail=1 --disable-warnings
+            if [[ $file == src/homework5/* ]]; then
+              pytest -v --capture=no tests/homework5/ --maxfail=1 --disable-warnings
             fi
           done    
 
