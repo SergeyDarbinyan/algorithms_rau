@@ -1,6 +1,10 @@
+import os
+import sys
 from datetime import datetime
 
 import pytest
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from homework6.hom1 import knap_sack_recursive, knap_sack_with_memoization, knap_sack_with_tabulation
 
