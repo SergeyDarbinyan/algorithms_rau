@@ -36,6 +36,8 @@ jobs:
           files_changed=$(git diff --name-only HEAD^ HEAD)
           echo "Files changed: $files_changed"
           
+          export PYTHONPATH=$(pwd)/src:$PYTHONPATH
+          
           for file in $files_changed; do
             if [[ $file == src/homework6/* ]]; then
               pytest -v --capture=no tests/homework6/ --maxfail=1 --disable-warnings
