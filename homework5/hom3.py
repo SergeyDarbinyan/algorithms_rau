@@ -72,6 +72,7 @@ def my_test_lps_cases():
     my_test_lps_substr_with_tabulation('abcbad')
     my_test_lps_substr_with_tabulation('abacdfgdcaba')
     my_test_lps_substr_with_tabulation('')
+    my_test_lps_substr_with_tabulation('diuacsjh')
 
 
 if __name__ == "__main__":
