@@ -31,8 +31,17 @@ def knap_sack_with_memoization(n, w, profit_list: List[int], weight_list: List[i
     return memo[n][w]
 
 
-def knap_sack_with_tabulation(n, w, profit_list: List[int], weight_list: List[int], memo: List[List[int]]) -> int:
-    pass
+def knap_sack_with_tabulation(n, w, profit_list: List[int], weight_list: List[int]) -> int:
+    dp: List[List[int]] = [[0 for _ in range(w + 1)] for _ in range(len(profit_list) + 1)]
+
+    for i in range(1, n + 1):
+        for j in range(1, w + 1):
+            if weight_list[i - 1] <= j:
+                dp[i][j] = max(profit_list[i - 1] + dp[i - 1][j - weight_list[i - 1]], dp[i - 1][j])
+            else:
+                dp[i][j] = dp[i - 1][j]
+
+    return dp[n][w]
 
 
 def my_test_knap_sack_recursive(w: int, profit_list: List[int], weight_list: List[int]):
@@ -48,9 +57,16 @@ def my_test_knap_sack_with_memoization(w: int, profit_list: List[int], weight_li
     print(f"Duration: {datetime.now() - start_time} (with memoization    ). KnapSack for {w} : {knap_sack}")
 
 
+def my_test_knap_sack_with_tabulation(w: int, profit_list: List[int], weight_list: List[int]):
+    start_time: datetime = datetime.now()
+    knap_sack: int = knap_sack_with_tabulation(len(profit_list), w, profit_list, weight_list)
+    print(f"Duration: {datetime.now() - start_time} (with tabulation     ). KnapSack for {w} : {knap_sack}")
+
+
 def my_test_knap_sack_with_all_ways(w: int, profit_list: List[int], weight_list: List[int]):
     my_test_knap_sack_recursive(w, profit_list, weight_list)
     my_test_knap_sack_with_memoization(w, profit_list, weight_list)
+    my_test_knap_sack_with_tabulation(w, profit_list, weight_list)
 
 
 if __name__ == "__main__":

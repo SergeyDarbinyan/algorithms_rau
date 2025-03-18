@@ -26,9 +26,24 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run unit tests
-        run: | 
-          pytest -v --capture=no homework6/test_hom1.py --maxfail=1 --disable-warnings          
+#      - name: Run unit tests
+#        run: |
+#          pytest -v --capture=no homework6/test_hom1.py --maxfail=1 --disable-warnings
+
+      - name: Run tests for modified files
+        run: |
+          echo "Checking for modified files..."
+          files_changed=$(git diff --name-only HEAD^ HEAD)
+          echo "Files changed: $files_changed"
+          
+          for file in $files_changed; do
+            if [[ $file == homework6/* ]]; then
+              pytest homework6/test_hom1.py --maxfail=1 --disable-warnings
+            fi
+            if [[ $file == homework5/* ]]; then
+              pytest homework5/test_hom1.py --maxfail=1 --disable-warnings
+            fi
+          done    
 
 #      - name: Check for changes in homework folders
 #        id: check-changes

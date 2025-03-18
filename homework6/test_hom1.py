@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from hom1 import knap_sack_recursive, knap_sack_with_memoization
+from hom1 import knap_sack_recursive, knap_sack_with_memoization, knap_sack_with_tabulation
 
 test_data = {
     "test1": {
@@ -56,10 +56,22 @@ def test_knap_sack_recursive(test_case):
 def test_knap_sack_with_memoization(test_case):
     data = test_data[test_case]
 
-    memo_1 = [[-1 for _ in range(data["capacity"] + 1)] for _ in range(len(data["profit_list"]) + 1)]
-    result_1 = knap_sack_with_memoization(len(data["profit_list"]), data["capacity"], data["profit_list"],
-                                          data["weight_list"], memo_1)
-    assert result_1 == data["expected_result"]
+    memo = [[-1 for _ in range(data["capacity"] + 1)] for _ in range(len(data["profit_list"]) + 1)]
+    result = knap_sack_with_memoization(len(data["profit_list"]), data["capacity"], data["profit_list"],
+                                          data["weight_list"], memo)
+    assert result == data["expected_result"]
+
+
+@pytest.mark.parametrize(
+    "test_case",
+    list(test_data.keys())
+)
+def test_knap_sack_with_tabulation(test_case):
+    data = test_data[test_case]
+
+    result = knap_sack_with_tabulation(len(data["profit_list"]), data["capacity"], data["profit_list"],
+                                         data["weight_list"])
+    assert result == data["expected_result"]
 
 
 def test_knap_sack_time():
