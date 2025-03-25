@@ -1,4 +1,4 @@
-# KnapSack 0/1
+# KnapSack 0/1 problem, find time to implement bounded and unbounded KnapSack problems
 
 from datetime import datetime
 from typing import List
