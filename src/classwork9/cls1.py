@@ -19,6 +19,7 @@
 # 5.Ավելացնել ֆունկցիա, որ գրաֆի մատրիցային ներկայացումից կստեղծի մեր Graph<int, int> տիպի օբյեկտ։
 # 6.Ավելացնել ֆունկցիա, որ գրաֆի հարևանության ցուցակ ներկայացումից
 # (adjacency-list representaton) կստեղծի մեր Graph<int, int> տիպի օբյեկտ։
+
 from collections import deque
 from typing import List
 
@@ -103,13 +104,39 @@ class Graph:
         print("\n BFS traversal starting from node", start_node.value, ":")
         print(" → ".join(map(str, bfs_result)))
 
-        # edges = self.out_edges.get(node_value)
-        # print(edges)
-        # # print(edges.pop())
-        # next_nodes = []
-        # # for i in edges:
-        # next_nodes.append(list(edges)[0].destination)
-        # return next_nodes
+    @staticmethod
+    def from_adjacency_matrix(matrix):
+        graph = Graph()
+
+        for i in range(len(matrix)):
+            node = Node(i + 1)
+            graph.add_node(node)
+
+        for i in range(len(matrix)):
+            for j in range(len(matrix)):
+                weight = matrix[i][j]
+                if weight != 0:
+                    source_node = graph.get_node(i + 1)
+                    dest_node = graph.get_node(j + 1)
+                    graph.add_edge(source_node, dest_node, weight)
+
+        return graph
+
+    @staticmethod
+    def from_adjacency_list(adj_list: dict[int, List[set]]):
+        graph = Graph()
+
+        for node_value in adj_list.keys():
+            node = Node(node_value)
+            graph.add_node(node)
+
+        for source_value, edges in adj_list.items():
+            source_node = graph.get_node(source_value)
+            for dest_value, weight in edges:
+                dest_node = graph.get_node(dest_value)
+                graph.add_edge(source_node, dest_node, weight)
+
+        return graph
 
 
 if __name__ == "__main__":
@@ -154,3 +181,47 @@ if __name__ == "__main__":
         print(node.value)
 
     graph.bfs_print(node2)
+
+    matrix = [
+        [0, 3, 0, 0, 0],
+        [0, 0, 4, 0, 0],
+        [0, 2, 0, 0, 0],
+        [0, 0, 0, 0, 5],
+        [0, 0, 0, 0, 0]
+    ]
+
+    graph1 = Graph.from_adjacency_matrix(matrix)
+
+    print("\n All nodes:")
+    for node in graph1.get_all_nodes():
+        print(node)
+
+    print("\n Ingoing edges:")
+    for k, v in graph1.in_edges.items():
+        print(f"{k}: {v}")
+
+    print("\n Outgoing edges:")
+    for k, v in graph1.out_edges.items():
+        print(f"{k}: {v}")
+
+    adj_list = {
+        1: [(2, 3)],
+        2: [(3, 4)],
+        3: [(2, 2)],
+        4: [(5, 5)],
+        5: []
+    }
+
+    graph2 = Graph.from_adjacency_list(adj_list)
+
+    print("\n All nodes:")
+    for node in graph2.get_all_nodes():
+        print(node.value)
+
+    print("\n Ingoing edges:")
+    for k, v in graph2.in_edges.items():
+        print(f"{k}: {v}")
+
+    print("\n Outgoing edges:")
+    for k, v in graph2.out_edges.items():
+        print(f"{k}: {v}")
