@@ -19,14 +19,20 @@
 # 5.Ավելացնել ֆունկցիա, որ գրաֆի մատրիցային ներկայացումից կստեղծի մեր Graph<int, int> տիպի օբյեկտ։
 # 6.Ավելացնել ֆունկցիա, որ գրաֆի հարևանության ցուցակ ներկայացումից
 # (adjacency-list representaton) կստեղծի մեր Graph<int, int> տիպի օբյեկտ։
+# 1. Graph կլասսում ավելացնել dfs կատարող ֆունկցիա, նշել գագաթ մուտք գործելիս եւ գագաթից դուրս
+# գալիս շրջանցման հերթականությունը։ (Node::start, Node::finish, Node::color).
+# ➢ void dfs()
 
 from collections import deque
 from typing import List
+
+from src.classwork9.node_color_enum import Color
 
 
 class Node:
     def __init__(self, value):
         self.value: int = value
+        self.color = Color.WHITE
 
     def __repr__(self):
         return f"Node({self.value})"
@@ -138,8 +144,30 @@ class Graph:
 
         return graph
 
+    def dfs_visit(self, node: Node):
+        print(node.value)
+        node.color = Color.GREEN
+        for next_node in self.get_next_nodes(node):
+            if next_node.color == Color.WHITE:
+                self.dfs_visit(next_node)
 
-if __name__ == "__main__":
+        node.color = Color.BLACK
+
+    def dfs(self, start_node: Node):
+        result = []
+        graph_nodes = list(self.get_all_nodes())
+
+        if start_node:
+            if start_node.color == Color.WHITE:
+                self.dfs_visit(start_node)
+
+        for node in graph_nodes:
+            if node.color == Color.WHITE:
+                self.dfs_visit(node)
+
+
+def my_test_1():
+    print("\n ----- Start my test 1 -----")
     graph = Graph()
 
     node1 = Node(1)
@@ -179,8 +207,14 @@ if __name__ == "__main__":
     next_nodes = graph.get_next_nodes(node2)
     for node in next_nodes:
         print(node.value)
-
     graph.bfs_print(node2)
+    graph.dfs(node2)
+
+    print("\n ----- End my test 1 -----")
+
+
+def my_test_2():
+    print("\n ----- Start my test 2 -----")
 
     matrix = [
         [0, 3, 0, 0, 0],
@@ -190,19 +224,25 @@ if __name__ == "__main__":
         [0, 0, 0, 0, 0]
     ]
 
-    graph1 = Graph.from_adjacency_matrix(matrix)
+    graph = Graph.from_adjacency_matrix(matrix)
 
     print("\n All nodes:")
-    for node in graph1.get_all_nodes():
+    for node in graph.get_all_nodes():
         print(node)
 
     print("\n Ingoing edges:")
-    for k, v in graph1.in_edges.items():
+    for k, v in graph.in_edges.items():
         print(f"{k}: {v}")
 
     print("\n Outgoing edges:")
-    for k, v in graph1.out_edges.items():
+    for k, v in graph.out_edges.items():
         print(f"{k}: {v}")
+
+    print("\n ----- End my test 2 -----")
+
+
+def my_test_3():
+    print("\n ----- Start my test 3 -----")
 
     adj_list = {
         1: [(2, 3)],
@@ -212,16 +252,24 @@ if __name__ == "__main__":
         5: []
     }
 
-    graph2 = Graph.from_adjacency_list(adj_list)
+    graph = Graph.from_adjacency_list(adj_list)
 
     print("\n All nodes:")
-    for node in graph2.get_all_nodes():
+    for node in graph.get_all_nodes():
         print(node.value)
 
     print("\n Ingoing edges:")
-    for k, v in graph2.in_edges.items():
+    for k, v in graph.in_edges.items():
         print(f"{k}: {v}")
 
     print("\n Outgoing edges:")
-    for k, v in graph2.out_edges.items():
+    for k, v in graph.out_edges.items():
         print(f"{k}: {v}")
+
+    print("\n ----- End my test 3 -----")
+
+
+if __name__ == "__main__":
+    my_test_1()
+    # my_test_2()
+    # my_test_3()
