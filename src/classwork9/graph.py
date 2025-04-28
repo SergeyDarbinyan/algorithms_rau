@@ -117,27 +117,49 @@ class Graph:
                 self.dfs_visit(node)
 
     def dfs_collect(self, node: Node, dfs_result: list):
-        # Mark the node as visited and add to result list
         node.color = Color.GREEN
         print(f"Visiting node: {node.value}")
         dfs_result.append(node.value)
 
-        # Visit all adjacent nodes
         for next_node in self.get_next_nodes(node):
             if next_node.color == Color.WHITE:
                 self.dfs_collect(next_node, dfs_result)
 
-        # Mark the node as fully visited
         node.color = Color.BLACK
         print(f"Node {node.value} is now fully visited (BLACK)")
 
     def dfs_print(self, start_node: Node):
-        # List to collect nodes in DFS order
         dfs_result = []
 
-        # Run the DFS traversal
         self.dfs_collect(start_node, dfs_result)
 
-        # Print the result in a readable format
         print("\nDFS traversal starting from node", start_node.value, ":")
         print(" → ".join(map(str, dfs_result)))
+
+    def find_path_bfs(self, start_node: Node, dest_node: Node) -> List[str]:
+        parents = {start_node.value: None}
+        queue = deque([start_node])
+        visited = {start_node.value}
+
+        while queue:
+            current_node = queue.popleft()
+
+            if current_node == dest_node:
+                break
+
+            for neighbor in self.get_next_nodes(current_node):
+                if neighbor.value not in visited:
+                    visited.add(neighbor.value)
+                    parents[neighbor.value] = current_node.value
+                    queue.append(neighbor)
+
+        if dest_node.value not in visited:
+            return []
+
+        path = []
+        current_node_value = dest_node.value
+        while current_node_value is not None:
+            path.append(current_node_value)
+            current_node_value = parents[current_node_value]
+
+        return path[::-1]
